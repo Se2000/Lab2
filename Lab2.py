@@ -48,4 +48,4 @@ for x in range(65, 91):
 #
 #     nadluzszy_bok = max(bok_a, bok_b, bok_c)
 #     if
-# jjgggg
+# jjggggjjjj
