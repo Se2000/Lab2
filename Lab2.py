@@ -48,4 +48,4 @@ if ((bok_a + bok_b) > bok_c) & ((bok_a + bok_c) > bok_b) & ((bok_b + bok_c) > bo
 
     nadluzszy_bok = max(bok_a, bok_b, bok_c)
     if
-jj
+jjgggg
