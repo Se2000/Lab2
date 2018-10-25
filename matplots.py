@@ -73,7 +73,52 @@
 # plt.grid(True)
 # plt.show()
 
-# Zadanie 4
+# Zadanie 4 + Trzy różne wykresy
+#
+# import matplotlib.pyplot as plt
+#
+# a = 1
+# b = -3
+# c = 1
+#
+# x = range(-10, 11, 1)
+#
+# y = []
+# for i in x:
+#     y.append((a * i ** 2) + (b * i) + c)
+#
+# plt.plot(x, y)
+# plt.title("Wykres f(x) = a*x^2 + b*x + c:")
+# plt.grid(True)
+# plt.show()
+#
+# import matplotlib.pyplot as plt
+#
+# a = 1
+# b = -3
+# c = 1
+#
+# x = range(-10, 11, 1)
+#
+# y = []
+# for i in x:
+#     y.append((a * i ** 2) + (b * i) + c)
+#
+# y2 = []
+# for i in x:
+#     y2.append(i * 2 + 6)
+#
+# y3 = []
+# for i in x:
+#     y3.append(-i * i + 4)
+#
+# plt.plot(x, y, "o", color="blue", linewidth=1, alpha=0.5)
+# plt.plot(x, y2, color="red", linewidth=3, alpha=0.7)
+# plt.plot(x, y3, "g--", color="green", linewidth=2, alpha=0.8)
+# plt.title("Trzy różne wykresy")
+# plt.legend(["f(x) = a*x^2 + b*x + c", "f(x) = 2*x + 6", "f(x) = -(x^2) + 4"], loc="upper left")
+# plt.xlabel("Oś X")
+# plt.ylabel("Oś Y")
+# plt.show()
 
-
-
+# Zadanie 5
