@@ -35,22 +35,29 @@
 #     print("Miejsca zerowe x1 = {}, x2 = {}".format(x1, x2))
 
 # Zadanie 6
+#
+# import random
+#
+# lista_liczb = []
+#
+# for x in range(0, 50):
+#     lista_liczb.append(random.randint(1, 99))
+#
+#
+# def sortowanie(lista):
+#     n = len(lista)
+#     for i in range(n):
+#         for j in range(0, n - i - 1):
+#             if lista[j] < lista[j + 1]:
+#                 lista[j], lista[j + 1] = lista[j + 1], lista[j]
+#
+#
+# sortowanie(lista_liczb)
+# print(lista_liczb)
 
-import random
 
-lista_liczb = []
+import numpy as np
 
-for x in range(0, 50):
-    lista_liczb.append(random.randint(1, 99))
-
-
-def sortowanie(lista):
-    n = len(lista)
-    for i in range(n):
-        for j in range(0, n - i - 1):
-            if lista[j] < lista[j + 1]:
-                lista[j], lista[j + 1] = lista[j + 1], lista[j]
-
-
-sortowanie(lista_liczb)
-print(lista_liczb)
+x = range(16384)
+x = np.reshape(x, (128, 128))
+print(x)
