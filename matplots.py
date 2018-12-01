@@ -1,4 +1,5 @@
 #Programowanie w jezykach skryptowych INiN5_PG.4 GD37859
+
 # Zadanie 1
 #
 # import matplotlib.pyplot as plt
