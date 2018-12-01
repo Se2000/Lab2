@@ -1,5 +1,3 @@
-#Programowanie w jezykach skryptowych INiN5_PG.4 GD37859
-
 # Zadanie 1
 #
 # import matplotlib.pyplot as plt
@@ -124,24 +122,25 @@
 # plt.show()
 
 # Zadanie 5
-#
-# import matplotlib.pyplot as plt
-# import numpy as np
-#
-# n = int(input("Podaj n: "))
-#
-# X = np.arange(n)
-#
-# Y1 = (1 - X / float(n)) * np.random.uniform(0.1, 1.0, n)
-# Y2 = (1 - X / float(n)) * np.random.uniform(0.1, 1.0, n)
-#
-# plt.bar(X, +Y1, color="darkmagenta")
-# plt.bar(X, -Y2, color="lime")
-#
-# for x, y in zip(X, Y1):
-#     plt.text(x + 0.4, y + 0.05, '%.2f' % y, ha='center', va='bottom')
-#
-# plt.ylim(-1.1, +1.1)
-# plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+n = int(input("Podaj n: "))
+
+X = np.arange(n)
+
+Y1 = (1 - X / float(n)) * np.random.uniform(0.1, 1.0, n)
+Y2 = (1 - X / float(n)) * np.random.uniform(0.1, 1.0, n)
+
+plt.bar(X, +Y1, color="darkmagenta")
+plt.bar(X, -Y2, color="lime")
+
+for x, y in zip(X, Y1):
+    plt.text(x + 0.4, y + 0.05, '%.2f' % y, ha='center', va='bottom')
+
+plt.ylim(-1.1, +1.1)
+plt.show()
 
 # Zadanie 6
+
