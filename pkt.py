@@ -121,6 +121,8 @@
 # ex = App()
 # sys.exit(app.exec_())
 
+import sys
+import math
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QLabel, QGridLayout
@@ -138,18 +140,15 @@ class Kalkulator(QWidget):
 
     def interfejs(self):
 
-        # etykiety
         etykieta1 = QLabel("Liczba 1:", self)
         etykieta2 = QLabel("Liczba 2:", self)
         etykieta3 = QLabel("Wynik:", self)
 
-        # przypisanie widgetów do układu tabelarycznego
         ukladT = QGridLayout()
         ukladT.addWidget(etykieta1, 0, 0)
         ukladT.addWidget(etykieta2, 0, 1)
         ukladT.addWidget(etykieta3, 0, 2)
 
-        # 1-liniowe pola edycyjne
         self.liczba1Edt = QLineEdit()
         self.liczba2Edt = QLineEdit()
         self.wynikEdt = QLineEdit()
@@ -161,13 +160,12 @@ class Kalkulator(QWidget):
         ukladT.addWidget(self.liczba2Edt, 1, 1)
         ukladT.addWidget(self.wynikEdt, 1, 2)
 
-        # przyciski
         dodajBtn = QPushButton("&Dodaj", self)
         odejmijBtn = QPushButton("&Odejmij", self)
         dzielBtn = QPushButton("&Mnóż", self)
         mnozBtn = QPushButton("&Dziel", self)
-        pierwBtn = QPushButton("&Dziel", self)
-        kwadratBtn = QPushButton("&Dziel", self)
+        pierwBtn = QPushButton("&Pierwiastkuj", self)
+        kwadratBtn = QPushButton("&Kwadratuj", self)
         koniecBtn = QPushButton("&Koniec", self)
         koniecBtn.resize(koniecBtn.sizeHint())
 
@@ -182,13 +180,14 @@ class Kalkulator(QWidget):
         ukladT.addLayout(ukladH, 2, 0, 1, 3)
         ukladT.addWidget(koniecBtn, 3, 0, 1, 3)
 
-        # przypisanie utworzonego układu do okna
         self.setLayout(ukladT)
 
         koniecBtn.clicked.connect(self.koniec)
         dodajBtn.clicked.connect(self.dzialanie)
         odejmijBtn.clicked.connect(self.dzialanie)
         mnozBtn.clicked.connect(self.dzialanie)
+        pierwBtn.clicked.connect(self.dzialanie)
+        kwadratBtn.clicked.connect(self.dzialanie)
         dzielBtn.clicked.connect(self.dzialanie)
 
         self.liczba1Edt.setFocus()
@@ -223,6 +222,7 @@ class Kalkulator(QWidget):
         try:
             liczba1 = float(self.liczba1Edt.text())
             liczba2 = float(self.liczba2Edt.text())
+            liczba = float(self.liczba1Edt.text())
             wynik = ""
 
             if nadawca.text() == "&Dodaj":
@@ -231,21 +231,28 @@ class Kalkulator(QWidget):
                 wynik = liczba1 - liczba2
             elif nadawca.text() == "&Mnóż":
                 wynik = liczba1 * liczba2
-            else:  # dzielenie
+            elif nadawca.text() == "&Dziel":
                 try:
                     wynik = round(liczba1 / liczba2, 9)
                 except ZeroDivisionError:
                     QMessageBox.critical(
                         self, "Błąd", "Nie można dzielić przez zero!")
                     return
-
+            elif nadawca.text() == "&Kwadratuj":
+                wynik = liczba * liczba
+            elif nadawca.text() == "&Pierwiastkuj":
+                try:
+                    wynik = math.sqrt(liczba)
+                except (liczba < 0):
+                    QMessageBox.critical(
+                        self, "Błąd", "Liczba musi byc wieksza od zera")
+                    return
             self.wynikEdt.setText(str(wynik))
 
         except ValueError:
             QMessageBox.warning(self, "Błąd", "Błędne dane", QMessageBox.Ok)
 
 if __name__ == '__main__':
-    import sys
 
     app = QApplication(sys.argv)
     okno = Kalkulator()
