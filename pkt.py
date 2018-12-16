@@ -166,6 +166,8 @@ class Kalkulator(QWidget):
         mnozBtn = QPushButton("&Dziel", self)
         pierwBtn = QPushButton("&Pierwiastkuj", self)
         kwadratBtn = QPushButton("&Kwadratuj", self)
+        odwrotBtn = QPushButton("&WOdwrotna", self)
+        procenttBtn = QPushButton("&Procent", self)
         koniecBtn = QPushButton("&Koniec", self)
         koniecBtn.resize(koniecBtn.sizeHint())
 
@@ -176,6 +178,8 @@ class Kalkulator(QWidget):
         ukladH.addWidget(pierwBtn)
         ukladH.addWidget(kwadratBtn)
         ukladH.addWidget(mnozBtn)
+        ukladH.addWidget(odwrotBtn)
+        ukladH.addWidget(procenttBtn)
 
         ukladT.addLayout(ukladH, 2, 0, 1, 3)
         ukladT.addWidget(koniecBtn, 3, 0, 1, 3)
@@ -186,8 +190,10 @@ class Kalkulator(QWidget):
         dodajBtn.clicked.connect(self.dzialanie)
         odejmijBtn.clicked.connect(self.dzialanie)
         mnozBtn.clicked.connect(self.dzialanie)
-        pierwBtn.clicked.connect(self.dzialanie)
-        kwadratBtn.clicked.connect(self.dzialanie)
+        pierwBtn.clicked.connect(self.dzialanie2)
+        kwadratBtn.clicked.connect(self.dzialanie2)
+        odwrotBtn.clicked.connect(self.dzialanie2)
+        procenttBtn.clicked.connect(self.dzialanie)
         dzielBtn.clicked.connect(self.dzialanie)
 
         self.liczba1Edt.setFocus()
@@ -222,7 +228,6 @@ class Kalkulator(QWidget):
         try:
             liczba1 = float(self.liczba1Edt.text())
             liczba2 = float(self.liczba2Edt.text())
-            liczba = float(self.liczba1Edt.text())
             wynik = ""
 
             if nadawca.text() == "&Dodaj":
@@ -231,6 +236,8 @@ class Kalkulator(QWidget):
                 wynik = liczba1 - liczba2
             elif nadawca.text() == "&Mnóż":
                 wynik = liczba1 * liczba2
+            elif nadawca.text() == "&Procent":
+                wynik = 100 * float(liczba2) / float(liczba1)
             elif nadawca.text() == "&Dziel":
                 try:
                     wynik = round(liczba1 / liczba2, 9)
@@ -238,22 +245,38 @@ class Kalkulator(QWidget):
                     QMessageBox.critical(
                         self, "Błąd", "Nie można dzielić przez zero!")
                     return
-            elif nadawca.text() == "&Kwadratuj":
-                wynik = liczba * liczba
-            elif nadawca.text() == "&Pierwiastkuj":
-                try:
-                    wynik = math.sqrt(liczba)
-                except (liczba < 0):
-                    QMessageBox.critical(
-                        self, "Błąd", "Liczba musi byc wieksza od zera")
-                    return
             self.wynikEdt.setText(str(wynik))
 
         except ValueError:
             QMessageBox.warning(self, "Błąd", "Błędne dane", QMessageBox.Ok)
 
-if __name__ == '__main__':
+    def dzialanie2(self):
 
+        nadawca = self.sender()
+
+        try:
+            liczba = float(self.liczba1Edt.text())
+            wynik = ""
+
+            if nadawca.text() == "&Kwadratuj":
+                wynik = liczba * liczba
+            elif nadawca.text() == "&WOdwrotna":
+                wynik = 1 / liczba
+            elif nadawca.text() == "&Pierwiastkuj":
+                try:
+                    wynik = math.sqrt(liczba)
+                    if liczba < 0:
+                        raise Exception
+                except Exception:
+                    QMessageBox.critical(
+                        self, "Błąd", "Liczba musi byc wieksza od zera")
+                    return
+            self.wynikEdt.setText(str(wynik))
+        except ValueError:
+            QMessageBox.warning(self, "Błąd", "Błędne dane", QMessageBox.Ok)
+
+
+if __name__ == '__main__':
     app = QApplication(sys.argv)
     okno = Kalkulator()
     sys.exit(app.exec_())
