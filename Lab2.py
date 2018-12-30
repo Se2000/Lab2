@@ -1,4 +1,4 @@
-# 1.1
+# Zadanie 1.1
 #
 # liczba_porzadkowa = int(input("Podaj liczbę porządkową: "))
 # liczba_koncowa = int(input("Podaj liczbę końcową: "))
@@ -6,14 +6,15 @@
 #
 # for x in range(liczba_porzadkowa, liczba_koncowa, wielkosc_odstepu):
 #     print(x, end=" ")
-#
-# 1.2
+
+# Zadanie 1.2
 #
 # komunikat = input("Wpisz swój komunikat: ")
 #
 # print(komunikat[::-1])
-#
-# 2.3
+
+
+# Zadanie 2.3
 #
 # wiadomosc = input("Wpisz wiadomość do zaszyfrowania: ")ś
 #
@@ -32,7 +33,10 @@
 # print("Zaszyfrowana wiadomość:\n", szyfrowanie(wiadomosc))
 #
 
-# 3.1
+# Zadanie 3.1
+
+# import math
+#
 # bok_a = int(input("Podaj bok a: "))
 # bok_b = int(input("Podaj bok b: "))
 # bok_c = int(input("Podaj bok c: "))
@@ -44,13 +48,17 @@
 #     trojkat.remove(max(trojkat))
 #     if ((trojkat[0] ** 2) + (trojkat[1] ** 2) == nadluzszy_bok ** 2):
 #         print("Trójkąt prostokątny.")
+#     Obwod = bok_a + bok_b + bok_c
+#     p = Obwod / 2
+#     z = (p * (p - bok_a) * (p - bok_b) * (p - bok_c))
+#     Pole = math.sqrt(z)
+#     print("Obwód trójkąta wynosi: ", Obwod)
+#     print("Pole trójkąta wynosi: ", Pole)
 #
-#     print("Pole trójkąta wynosi: ", ((bok_a + bok_b + bok_c) / 2))
-#     print("Obwód trójkąta wynosi: ", (bok_a + bok_b + bok_c))
 # else:
 #     print("Nie da się zbudować trójkąta.")
 
-# 3.2
+# Zadanie 3.2
 
 # for x in range(65, 91):
 #     print(chr(x) + chr(x + 32), end="")
@@ -58,6 +66,8 @@
 #         print("")
 #         for x in range(65, 91):
 #             print(chr(x + 32) + chr(x), end="")
+
+# Zadanie 3.3
 
 # import random
 #
@@ -74,6 +84,7 @@
 # print("\nLista w odwróconej kolejności.")
 # for x in reversed(lista_liczb):
 #     print(x, end=" ")
+# lista_liczb.reverse()
 #
 # print("\nLista uporządkowana.")
 # for x in sorted((lista_liczb)):
@@ -81,10 +92,34 @@
 #
 # liczba_do_usuniecia = int(input("\nJaką liczbę usunąć z listy: "))
 #
-# if liczba_do_usuniecia in lista_liczb:
+# try:
 #     lista_liczb.remove(liczba_do_usuniecia)
-# else:
+#     print(lista_liczb)
+# except:
 #     print("Nie ma takiej liczby w liście.")
-
-
-
+#
+# indeks_do_usuniecia = int(input("\nPodaj numer indeksu liczby do usunięcia: "))
+#
+# try:
+#     lista_liczb.pop(indeks_do_usuniecia)
+#     print(lista_liczb)
+# except:
+#     print("Liczby o takim indeksie nie ma w liście.")
+#
+# liczba_do_sprawdzenia = int(input("\nPodaj liczbę do sprawdzenia: "))
+#
+# try:
+#     ile = lista_liczb.count(liczba_do_sprawdzenia)
+#     print("\nLiczba wystąpień elementu w liście: ", ile)
+# except:
+#     print("Nie ma takiej liczby w liście.")
+#
+# kiedy = lista_liczb.index(liczba_do_sprawdzenia)
+# print("\nNumer indeksu liczby w liście: ", kiedy)
+#
+# print("Indeksy od i do j.")
+#
+# i = int(input("\nPodaj i: "))
+# j = int(input("\nPodaj j: "))
+#
+# print("Elementy listy od i do j:",lista_liczb[i:j])
