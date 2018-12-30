@@ -92,24 +92,26 @@
 #         line = line.replace(word, "")
 # fin.close()
 
-#-*- coding: utf-8 -*-
+# Zadanie 7
 
-inputfile = 'C:\dev\przed.txt'
-outputfile = 'C:\dev\po.txt'
+# inputfile = 'C:\dev\przed.txt'
+# outputfile = 'C:\dev\po.txt'
+#
+# def remove_strings():
+#     delete_list = ['się',' i','oraz','nigdy','dlaczego']
+#     filein = open(inputfile)
+#     fileout = open(outputfile, "w+")
+#     for line in filein:
+#         for word in delete_list:
+#             line = line.replace(word, "")
+#         fileout.write(line)
+#     filein.close()
+#     fileout.close()
+#
+# if __name__ == '__main__':
+#     remove_strings()
 
-def remove_strings():
-    delete_list = ['się',' i','oraz','nigdy','dlaczego']
-    filein = open(inputfile)
-    fileout = open(outputfile, "w+")
-    for line in filein:
-        for word in delete_list:
-            line = line.replace(word, "")
-        fileout.write(line)
-    filein.close()
-    fileout.close()
 
-if __name__ == '__main__':
-    remove_strings()
 
 # import numpy as np
 #
